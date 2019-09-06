@@ -23,7 +23,7 @@ class App extends Component {
 
 
   handleDeleteCard(cardId){
-    const newCards = this.state.store.allCards.filter(card => card.id != cardId);
+    const newCards = this.state.store.allCards.filter(card => card.id !== cardId);
     this.setState({
       lists: this.STORE.lists,
       allCards: newCards
@@ -43,8 +43,9 @@ class App extends Component {
               key={list.id}
               header={list.header}
               cards={list.cardIds.map(id => store.allCards[id])}
+              handleDelete={this.handleDeleteCard}
             />))}
-            <Card allCards={this.state.allCards} handleDelete={(item) => this.handleDeleteCard(item)} />
+            {/* <Card allCards={this.state.allCards} handleDelete={(item) => this.handleDeleteCard(item)} /> */}
           
         </div>
       </main>
